@@ -1,0 +1,18 @@
+<add-charge-modal user="user"></add-charge-modal>
+<table class="table table-striped top-20">
+    <thead>
+        <tr>
+            <th>&nbsp;</th>
+            <th>Detail</th>
+            <th>Date</th>
+            <th>Amount</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr ng-repeat="charge in user.summary">
+            <td><span class="glyphicon glyphicon-stop {{charge.type}}-type"></span></td>
+            <td>{{charge.name}}</td>
+            <td>{{charge.date | date: 'dd/M'}}</td>
+            <td>{{user.common.currency}} {{charge.price}}</td>
+        </tr>
+</table>

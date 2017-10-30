@@ -1,0 +1,8 @@
+{
+    id: 0,
+        name: 'Federico',
+            lastname: 'Fabre',
+                money: [{ max: 20000, expenses: [{ fixedCost: 8345, creditCard: 5083.52, cash: 1250 }] }],
+                    summary: [{ name: 'Dinner', date: '21/10', price: 1230.1 }]
+    //common: { date: new Date() }
+}
