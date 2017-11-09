@@ -6,26 +6,15 @@
 
         return {
 
-            templateUrl: 'directives/expenses/expenses_preview.html',
+            templateUrl: 'templates/directives/expenses/expenses_preview.html',
             scope: {
                 user: '=',
                 common: '=',
                 chart: '='
-            }
+            },
+            link: function (scope, elem, atr) { }
         };
 
     });
 
 })();
-
-/*
-
-vm.name = 'fede';
-
-@ text bind: In this case the modified content only affect the directive (name="{{name}}")
-
-= two way bind: In this case the modified content affect directive and controller (name="name")
-
-& one way bind: 
-
-*/

@@ -1,9 +1,9 @@
 (function () {
 
-    angular.module('app').directive('summary', ["$state",function ($state) {
+    angular.module('app').directive('summaryLong', ["$state", function ($state) {
 
         return {
-            templateUrl: 'templates/directives/summary/summary.html',
+            templateUrl: 'templates/directives/summary/summary-long.html',
             scope: {
                 user: '='
             },

@@ -4,10 +4,11 @@
 
         return {
 
-            templateUrl: 'directives/available/available_preview.html',
+            templateUrl: 'templates/directives/available/available_preview.html',
             scope: {
                 user: '=',
-                chart: '='
+                chart: '=',
+                projection: '='
             }
         }
 

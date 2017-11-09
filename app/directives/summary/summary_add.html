@@ -1,5 +1,5 @@
 ﻿<button type="button" class="btn btn-warning" data-toggle="modal" data-target="#addCharge">
-    <span class="glyphicon glyphicon-flash"></span> Add charge
+    <span class="glyphicon glyphicon-flash"></span> Quick add
 </button>
 <div class="modal fade" id="addCharge" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog modal-lg" role="document">
@@ -17,36 +17,40 @@
 
                 <p>Please set details for the new charge</p>
                 <form class="form-inline" name="form" ng-submit="save(form)">
-                    <div class="form-group">
-                        <label class="sr-only">Detail</label>
-                        <input type="text" name="name" class="form-control" ng-model="charge.name" placeholder="Detail" required>
-                        <span ng-show="form.$submitted && form.name.$error.required">Is required</span>
+                    <div class="row">
+                        <div class="form-group col-md-3">
+                            <label>Detail </label>
+                            <input type="text" name="name" class="form-control" ng-model="charge.name" placeholder="Detail" required>
+                            <span ng-show="form.$submitted && form.name.$error.required">Is required</span>
+                        </div>
+                        <div class="form-group col-md-3">
+                            <label>Date </label>
+                            <input type="date" name="date" class="form-control" ng-model="charge.date" placeholder="Date" required>
+                            <span ng-show="form.$submitted && form.date.$error.required">Is required</span>
+                        </div>
+                        <div class="form-group col-md-3">
+                            <label>Type of payment</label>
+                            <select class="form-control" id="type" name="type" ng-model="charge.type" required>
+                                <option ng-repeat="type in user.expenses | filter: type.active = true " class="color-{{type.shortName}}" value="{{type.shortName}}">{{type.elegantName}}</option>
+                            </select>
+                            <span ng-show="form.$submitted && form.type.$error.required">Is required</span>
+                        </div>
+                        <div class="form-group col-md-3">
+                            <label>Amount $ </label>
+                            <input type="number" class="form-control" name="price" ng-model="charge.price" placeholder="1350" required>
+                            <span ng-show="form.$submitted && form.price.$error.number">Is required</span>
+                            <span ng-show="form.$submitted && form.price.$error.number">Use just numbers</span>
+                            <span ng-show="charge.price < 0">Amount must be positive</span>
+                        </div>
                     </div>
-                    <div class="form-group">
-                        <label class="sr-only">Password</label>
-                        <input type="date" name="date" class="form-control" ng-model="charge.date" placeholder="Date" required>
-                        <span ng-show="form.$submitted && form.date.$error.required">Is required</span>
-                    </div>
-                    <div class="form-group">
-                        <label>Type of payment</label>
-                        <select class="form-control" id="type" name="type" ng-model="charge.type" required>
-                            <option class="credit-type" value="credit">Credit</option>
-                            <option class="cash-type" value="cash">Cash</option>
-                            <option class="fixed-type" value="fixed">Fixed</option>
-                        </select>
-                        <span ng-show="form.$submitted && form.type.$error.required">Is required</span>
-                    </div>
-                    <div class="form-group">
-                        <label>Amount $ </label>
-                        <input type="number" class="form-control" name="price" ng-model="charge.price" placeholder="1350" required>
-                        <span ng-show="form.$submitted && form.price.$error.number">Is required</span>
-                        <span ng-show="form.$submitted && form.price.$error.number">Use just numbers</span>
-                    </div>
-                    <div class="form-group top-20">
-                        <button type="submit" class="btn btn-success" ng-disabled="form.$invalid">Add $$</button>
-                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                    </div>
-                    
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div class="form-group top-20 pull-right">
+                                <button type="submit" class="btn btn-success" ng-disabled="form.$invalid">Add $$</button>
+                                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                            </div>
+                        </div>
+                    </div>                    
                 </form>
             </div>
         </div>

@@ -1,0 +1,66 @@
+<button type="button" class="btn btn-{{type.shortName}}" data-toggle="modal" data-target="#addCharge{{type.shortName}}">
+	<span class="glyphicon glyphicon-flash"></span> Add {{type.elegantName}}
+</button>
+<div class="modal fade" id="addCharge{{type.shortName}}" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+	<div class="modal-dialog modal-lg" role="document">
+		<div class="modal-content">
+			<div class="modal-header">
+				<h3 class="modal-title" id="exampleModalLabel">Adding new charge to {{type.elegantName}}</h3>
+				<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+					<span aria-hidden="true">&times;</span>
+				</button>
+			</div>
+			<div class="modal-body">
+				<div class="alert alert-danger" ng-show="error">
+					<strong>Error!</strong> {{error}}
+				</div>
+
+				<p>Please set details for the new charge</p>
+                <p>Type of payment: <span class="color-{{type.shortName}}"><b>{{type.elegantName}}</b></span></p>
+				<form class="form-inline" name="form" ng-submit="save(form)">
+					<div class="form-group">
+						<label>Detail</label>
+						<input type="text" name="name" class="form-control" ng-model="charge.name" placeholder="Detail" required>
+						<span ng-show="form.$submitted && form.name.$error.required">Is required</span>
+					</div>
+					<div class="form-group" ng-hide="type.shortName == 'fixed'">
+						<label>Date</label>
+						<input type="date" name="date" class="form-control" ng-model="charge.date" placeholder="Date" ng-required="type.shortName != 'fixed'">
+						<span ng-show="form.$submitted && form.date.$error.required">Is required</span>
+					</div>
+                    <div class="form-group" ng-show="type.shortName == 'fixed'">
+                        <label>Periodicity</label>
+                        <select class="form-control" id="periodicity" name="periodicity" ng-model="charge.periodicity" ng-required="type.shortName == 'fixed'">
+                            <option ng-repeat="period in type.periodicity" value="{{period.name}}">{{period.name}}</option>
+                        </select>
+                        <span ng-show="form.$submitted && form.periodicity.$error.required">Is required</span>
+                    </div>
+                    <div class="form-group" ng-show="type.shortName == 'credit'">
+                        <label>Origin</label>
+                        <select class="form-control" id="origin" name="origin" ng-model="charge.origin" ng-required="type.shortName == 'credit'">
+                            <option ng-repeat="origin in type.origin" value="{{origin.name}}">{{origin.name}}</option>
+                        </select>
+                        <span ng-show="form.$submitted && form.periodicity.$error.required">Is required</span>
+                    </div>
+                    <div class="form-group" ng-show="type.shortName == 'credit'">
+                        <label>Due</label>
+                        <input type="number" name="due" class="form-control" ng-model="charge.due" ng-required="type.shortName == 'credit'" />
+                        <span ng-show="charge.due < 1">Due must be 1 or more</span>
+                        <span ng-show="form.$submitted && form.due.$error.required">Is required</span>
+                    </div>
+					<div class="form-group">
+						<label>Amount $ </label>
+						<input type="number" class="form-control" name="price" ng-model="charge.price" placeholder="1350" required>
+						<span ng-show="form.$submitted && form.price.$error.number">Is required</span>
+						<span ng-show="form.$submitted && form.price.$error.number">Use just numbers</span>
+					</div>
+					<div class="form-group left-20">
+						<button type="submit" class="btn btn-success" ng-disabled="form.$invalid">Add $$</button>
+						<button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+					</div>
+
+				</form>
+			</div>
+		</div>
+	</div>
+</div>

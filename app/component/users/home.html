@@ -1,0 +1,38 @@
+﻿<div>
+    <h1 class="page-header">Home</h1>
+   
+    <div class="row">
+        <div class="col col-lg-6 col-md-6 mycontent-left">
+            <div class="row">
+                <div class="col col-lg-8 col-md-8">
+                    <h2>Preview</h2>
+                </div>
+                <div class="col col-lg-4 col-md-4">
+                    <p class="text-right"><span class="glyphicon glyphicon-calendar"></span> {{us.user.common.date | date: 'dd/MM'}}</p>
+                </div>
+            </div>
+
+            <div class="btn-group bottom-30" data-toggle="buttons">
+                    <input type="radio" name="options" ng-model="us.projection" id="option1" ng-value="true" ng-checked="us.projection"> Projection
+                    <input type="radio" name="options" ng-model="us.projection" id="option2" ng-value="false" ng-checked="!us.projection"> Real
+            </div>
+            <expenses-preview user="us.user" chart="us.expensesChart"></expenses-preview>
+            <available-preview user="us.user" chart="us.availableChart" projection="us.projection"></available-preview>
+
+        </div>
+        <div class="col col-lg-6 col-md-6">
+            <div class="row">
+                <div class="col col-lg-8 col-md-8">
+                    <h2 class="text-left">Summary</h2>
+                </div>
+                <div class="col col-lg-4 col-md-4">
+                    <p class="text-right "><span class="glyphicon glyphicon-calendar"></span> {{us.user.common.date | date: 'MMMM'}}</p>
+                </div>
+            </div>
+
+            <summary user="us.user"></summary>
+
+        </div>
+    </div>
+
+</div>

@@ -5,29 +5,25 @@
     <meta charset="utf-8">
     <meta name="description" content="">
     <meta name="author" content="">
-
+    <meta name="viewport" content="width=device-width, initial-scale=1">
     <base href="/">
 
     <title>myCash</title>
 
-    <!--bootstrap and our app css file-->
-
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
-    <link rel="stylesheet" href="app.css">
+    <link rel="stylesheet" href="styles/styles.css">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.2.4/jquery.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.6/js/bootstrap.min.js"></script>
-
-    <!--angular and ui-router-->
     <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.5/angular.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/angular-ui-router/0.2.18/angular-ui-router.js"></script>
+    <script src="https://use.fontawesome.com/abefe02c3a.js"></script>
     <script src="/fusioncharts/fusioncharts.js"></script>
     <script src="/fusioncharts/angular-fusioncharts.min.js"></script>
-
-    <!--our angular app-->
+    <script src="/lodash/lodash.js"></script>
 </head>
 
 <body ng-app="app">
-    <div class="container">
+    <div class="container" ng-controller="mainController as m">
 
         <nav class="navbar navbar-inverse">
             <div class="container-fluid">
@@ -35,8 +31,8 @@
                     <a class="navbar-brand">MyCash</a>
                 </div>
                 <ul class="nav navbar-nav">
-                    <li class="active"><a href="#">Home</a></li>
-                    <li><a href="#">Text 1</a></li>
+                    <li ng-class="m.state.current.name == 'users' ? 'active' : ''"><a ui-sref="users">Home</a></li>
+                    <li ng-class="m.state.current.name == 'expenses' ? 'active' : ''"><a ui-sref="expenses">Expenses</a></li>
                     <li><a href="#">Text 2</a></li>
                 </ul>
                 <ul class="nav navbar-nav navbar-right">
@@ -49,14 +45,6 @@
             <div ui-view>Hello, world!</div>
         </div>
     </div>
-
-    <script src="app.js"></script>
-    <script src="services/users/users.js"></script>
-    <script src="directives/summary/summary_add.js"></script>
-    <script src="directives/summary/summary.js"></script>
-    <script src="directives/expenses/expenses_preview.js"></script>
-    <script src="directives/available/available_preview.js"></script>
-    <script src="component/users/users.js"></script>    
-    
+    <script src="js/main.js"></script>
 </body>
 </html>

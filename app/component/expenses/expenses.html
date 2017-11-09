@@ -1,0 +1,46 @@
+<div id="expenses">
+	<div class="row">
+		<div class="col-lg-8 col-md-8">
+			<h1 class="page-header">Expenses</h1>
+		</div>
+		<div class="col-lg-4 col-md-4">
+			<available-preview user="us.user" projection="us.projection"></available-preview>
+		</div>
+	</div>
+	<div class="row">
+		<div class="col-lg-12 col-md-12">            
+            <add-individual ng-repeat="type in us.user.expenses | filter: type.active = true " type="type" ></add-individual>
+            <a class="btn btn-default">Add new type of charge</a>
+            <h2 class="top-20">Filter:</h2><a class="btn btn-default">Month: October X</a>
+            <table class="table table-striped top-20">
+                <thead>
+                    <tr>
+                        <th>Type</th>
+                        <th>Detail</th>
+                        <th>Date</th>
+                        <th>Amount</th>
+                        <th>Origin</th>
+                        <th>Due</th>
+                        <th>Edit</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr ng-repeat="charge in us.user.summary | orderBy: '-date'">
+                        <td><span class="glyphicon glyphicon-stop color-{{charge.type}}"></span> {{charge.type}}</td>
+                        <td>{{charge.name}}</td>
+                        <td ng-hide="charge.type == 'fixed'">{{charge.date | date: 'dd/M'}}</td>
+                        <td ng-show="charge.type == 'fixed'">{{charge.periodicity}}</td>
+                        <td>{{user.common.currency}} {{charge.price}}</td>
+                        <td><span ng-show="charge.type != 'credit'">--</span>{{charge.origin}}</td>
+                        <td><span ng-show="charge.type != 'credit'">--</span><span ng-show="charge.type == 'credit'">{{us.dueMaker(charge.date,us.today)}} / {{charge.due}}</span></td>
+                        <td>
+                            <i class="fa fa-money color-red fa-lg" ng-hide="charge.paid" title="Not paid yet"></i>
+                            <i class="fa fa-check-square-o color-green fa-lg" ng-show="charge.paid" title="Already paid!"></i>
+                            <i class="fa fa-pencil-square-o fa-lg right-10 left-10"></i>
+                            <i class="fa fa-trash fa-lg"></i>
+                        </td>
+                    </tr>
+            </table>
+		</div>
+	</div>
+</div>

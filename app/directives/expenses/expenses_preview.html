@@ -11,21 +11,13 @@
         <h2>Expenses</h2>
         <table class="table">
             <tbody>
-                <tr>
-                    <td><span class="glyphicon glyphicon-stop fixed-type"></span> Fixed cost</td>
-                    <td>{{user.common.currency}} {{user.expenses.fixedCost}}</td>
-                </tr>
-                <tr>
-                    <td><span class="glyphicon glyphicon-stop credit-type"></span> Credit</td>
-                    <td>{{user.common.currency}} {{user.expenses.creditCard}}</td>
-                </tr>
-                <tr>
-                    <td><span class="glyphicon glyphicon-stop cash-type"></span> Cash</td>
-                    <td>{{user.common.currency}} {{user.expenses.cash}}</td>
+                <tr ng-repeat="type in user.expenses | filter: type.active = true ">
+                    <td><span class="glyphicon glyphicon-stop color-{{type.shortName}}"></span> {{type.elegantName}}</td>
+                    <td>{{user.common.currency}} {{type.expense}}</td>
                 </tr>
                 <tr>
                     <td><b>Total</b></td>
-                    <td>{{user.common.currency}} {{user.totalExpense()}}</td>
+                    <td>{{user.common.currency}} {{user.totalExpense}}</td>
                 </tr>
             </tbody>
         </table>

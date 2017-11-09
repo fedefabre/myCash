@@ -1,0 +1,106 @@
+﻿.colorTypes(@name,@color,@border) {
+    .color-@{name}{
+        color:@color;
+    }
+    .btn-@{name} {
+        color: #fff;
+        background-color: @color;
+        border-color: @border;
+    }
+    .btn-@{name}:hover {
+        color: #e9e5e5;
+    }
+}
+
+.colorTypes(cash,#4db6ac,#2e6e68);
+.colorTypes(credit,#64b5f6,#4b8cc0);
+.colorTypes(fixed,#84c784,#275929);
+.colorTypes(extra1,#e63f3f,#c32020);
+.colorTypes(extra2,#d06ae9,#8f49a0);
+.colorTypes(extra3,#e46829,#aa4c1c);
+
+.marginal(@size,@value) {
+    .top-@{size} {
+        margin-top: @value;
+    }
+
+    .bottom-@{size} {
+        margin-bottom: @value;
+    }
+
+    .left-@{size} {
+        margin-left: @value;
+    }
+
+    .right-@{size} {
+        margin-right: @value;
+    }
+}
+
+.marginal(10,10px);
+.marginal(20,20px);
+.marginal(30,30px);
+.marginal(40,40px);
+.marginal(50,50px);
+.marginal(60,60px);
+
+.color-red {
+    color: #b70f0a;
+}
+
+.color-green {
+    color: #4c7a34;
+}
+
+.modal-header > h3 {
+    display: -webkit-inline-box;
+}
+﻿
+h2 {
+    font-size: 20px;
+    margin-top: 0px;
+}
+
+.page-header {
+    border-bottom: 1px solid #a09595;
+    font-size: 25px;
+    margin: 10px 0 20px;
+}
+
+.mycontent-left {
+    border-right: 1px solid #a09595;
+}
+
+.mycontent-right {
+    border-left: 1px solid #a09595;
+}
+
+.fixed-type {
+    color: #81c784;
+}
+
+.cash-type {
+    color: #4db6ac;
+}
+
+.credit-type {
+    color: #64b5f6;
+}
+
+.available {
+    font-size: 34px;
+}
+
+small, .small {
+    font-size: 50%;
+    opacity: 0.8;
+}
+
+form div span {
+    color: red;
+    display: block;
+}
+
+#expenses .available {
+    border-bottom: 1px solid #a09595;
+}

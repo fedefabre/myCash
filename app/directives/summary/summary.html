@@ -6,13 +6,20 @@
             <th>Detail</th>
             <th>Date</th>
             <th>Amount</th>
+            <th>Paid</th>
         </tr>
     </thead>
     <tbody>
-        <tr ng-repeat="charge in user.summary">
-            <td><span class="glyphicon glyphicon-stop {{charge.type}}-type"></span></td>
+        <tr ng-repeat="charge in user.summary | orderBy: '-date' | limitTo: 6 " >
+            <td><span class="glyphicon glyphicon-stop color-{{charge.type}}"></span></td>
             <td>{{charge.name}}</td>
-            <td>{{charge.date | date: 'dd/M'}}</td>
+            <td ng-hide="charge.type == 'fixed'">{{charge.date | date: 'dd/M'}}</td>
+            <td ng-show="charge.type == 'fixed'">{{charge.periodicity}}</td>
             <td>{{user.common.currency}} {{charge.price}}</td>
+            <td>
+                <i class="fa fa-money color-red fa-lg" ng-hide="charge.paid" title="Not paid yet"></i>
+                <i class="fa fa-check-square-o color-green fa-lg" ng-show="charge.paid" title="Already paid!"></i>
+            </td>
         </tr>
+        <tr ng-show="user.summary.length > 6"><td colspan="4" class="text-center"> And {{ user.summary.length - 6 }} more - <a  ui-sref="expenses">View all >></a></td></tr>
 </table>

@@ -1,0 +1,24 @@
+<a class="btn btn-cash">Add cash</a>
+<a class="btn btn-credit">Add credit card</a>
+<a class="btn btn-fixed">Add fixed cost</a>
+<a class="btn btn-default">Add new type of charge</a>
+<h2 class="top-20">Filter:</h2><a class="btn btn-default">Month: October X</a>
+<table class="table table-striped top-20">
+    <thead>
+        <tr>
+            <th>&nbsp;</th>
+            <th>Detail</th>
+            <th>Date</th>
+            <th>Amount</th>
+            <th>Edit</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr ng-repeat="charge in user.summary">
+            <td><span class="glyphicon glyphicon-stop color-{{charge.type}}"></span></td>
+            <td>{{charge.name}}</td>
+            <td>{{charge.date | date: 'dd/M'}}</td>
+            <td>{{user.common.currency}} {{charge.price}}</td>
+            <td>editing</td>
+        </tr>
+</table>

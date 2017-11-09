@@ -16,7 +16,7 @@ app.use(function (req, res, next) {
 
 app.use(morgan('dev'));
 
-app.use(express.static(__dirname + '/app'));
+app.use(express.static(__dirname + '/dist'));
 
 app.get('/userList', function (req, res) {
     res.sendFile(path.join(__dirname + '/app/common/userList.json'));
@@ -31,8 +31,13 @@ app.get('/fusioncharts/:file', function (req, res) {
     res.sendFile(path.join(__dirname + '/node_modules/fusioncharts/'+file));
 });
 
+app.get('/lodash/:file', function (req, res) {
+    var file = req.params.file;
+    res.sendFile(path.join(__dirname + '/node_modules/lodash/' + file));
+});
+
 app.get('*', function (req, res) {
-    res.sendFile(path.join(__dirname + '/index.html'));
+    res.sendFile(path.join(__dirname + '/dist/templates/index.html'));
 });
 
 app.listen(8081);
